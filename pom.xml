@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>carve</groupId>
+    <groupId>ch.carve</groupId>
     <artifactId>feign</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
         <ribbon.version>2.2.2</ribbon.version>
-        <hystrix.version>1.4.3</hystrix.version>
-        <feign.version>9.4.0</feign.version>
+		<hystrix.version>1.4.3</hystrix.version>
+		<jackson.version>2.4.3</jackson.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -22,38 +22,40 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.orbitz.consul</groupId>
-            <artifactId>consul-client</artifactId>
-            <version>0.12.8</version>
+        	<groupId>org.slf4j</groupId>
+        	<artifactId>slf4j-api</artifactId>
+        	<version>1.7.21</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.netflix.hystrix</groupId>
-            <artifactId>hystrix-metrics-event-stream</artifactId>
-            <version>${hystrix.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-core</artifactId>
-            <version>${feign.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-jaxrs</artifactId>
-            <version>${feign.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-jackson</artifactId>
-            <version>${feign.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-ribbon</artifactId>
-            <version>${feign.version}</version>
-        </dependency>
-
+		<dependency>
+			<groupId>com.orbitz.consul</groupId>
+			<artifactId>consul-client</artifactId>
+			<version>0.12.8</version>
+		</dependency>		
+		<dependency>
+		    <groupId>io.github.openfeign</groupId>
+		    <artifactId>feign-core</artifactId>
+		    <version>9.4.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.github.openfeign</groupId>
+		    <artifactId>feign-jackson</artifactId>
+		    <version>9.4.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.github.openfeign</groupId>
+		    <artifactId>feign-slf4j</artifactId>
+		    <version>9.4.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.github.openfeign</groupId>
+		    <artifactId>feign-ribbon</artifactId>
+		    <version>9.4.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.github.openfeign</groupId>
+		    <artifactId>feign-hystrix</artifactId>
+		    <version>9.4.0</version>
+		</dependency>
         <!-- testing -->
         <dependency>
             <groupId>junit</groupId>
@@ -61,6 +63,13 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+        	<groupId>org.slf4j</groupId>
+        	<artifactId>slf4j-log4j12</artifactId>
+        	<version>1.7.21</version>
+        	<scope>test</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>feign</finalName>
