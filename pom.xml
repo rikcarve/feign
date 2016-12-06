@@ -50,6 +50,12 @@
 		    <groupId>io.github.openfeign</groupId>
 		    <artifactId>feign-ribbon</artifactId>
 		    <version>9.4.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.reactivex</groupId>
+                    <artifactId>rxjava</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 		<dependency>
 		    <groupId>io.github.openfeign</groupId>

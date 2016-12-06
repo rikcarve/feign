@@ -5,6 +5,13 @@ public class World {
     private String helloWorld;
     private int port;
 
+    public World() {
+    }
+
+    public World(String helloWorld) {
+        this.helloWorld = helloWorld;
+    }
+
     public String getIpAddress() {
         return ipAddress;
     }
