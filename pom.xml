@@ -7,9 +7,6 @@
     <packaging>war</packaging>
 
     <properties>
-        <ribbon.version>2.2.2</ribbon.version>
-		<hystrix.version>1.4.3</hystrix.version>
-		<jackson.version>2.4.3</jackson.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -30,7 +27,7 @@
 			<groupId>com.orbitz.consul</groupId>
 			<artifactId>consul-client</artifactId>
 			<version>0.12.8</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 		    <groupId>io.github.openfeign</groupId>
 		    <artifactId>feign-core</artifactId>
@@ -50,18 +47,21 @@
 		    <groupId>io.github.openfeign</groupId>
 		    <artifactId>feign-ribbon</artifactId>
 		    <version>9.4.0</version>
-            <exclusions>
+            <!-- exclude rxjava in favour of the newer version provided through feign-hystrix -->
+<!--             <exclusions>
                 <exclusion>
                     <groupId>io.reactivex</groupId>
                     <artifactId>rxjava</artifactId>
                 </exclusion>
             </exclusions>
-		</dependency>
-		<dependency>
+ -->		</dependency>
+
+<!-- 		<dependency>
 		    <groupId>io.github.openfeign</groupId>
 		    <artifactId>feign-hystrix</artifactId>
 		    <version>9.4.0</version>
 		</dependency>
+ -->
         <!-- testing -->
         <dependency>
             <groupId>junit</groupId>
