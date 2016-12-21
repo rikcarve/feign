@@ -1,5 +1,8 @@
 package carve.feign;
 
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.Response;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.MDC;
@@ -59,7 +62,8 @@ public class HelloFeignTest {
     // .logger(new Slf4jLogger(HelloFeignTest.class))
     // .logLevel(Level.BASIC)
     // .retryer(Retryer.NEVER_RETRY)
-    // .target(LoadBalancingTarget.create(HelloWorld.class, "http://hello"), () -> new World("Fallback!"));
+    // .target(LoadBalancingTarget.create(HelloWorld.class, "http://hello"), ()
+    // -> new World("Fallback!"));
     // World world = helloWorld.world();
     // for (int i = 0; i < 10; i++) {
     // System.out.println(world.getHelloWorld());
@@ -91,6 +95,15 @@ public class HelloFeignTest {
             }
             world = helloWorld.world();
         }
+    }
+
+    @Test
+    public void testJaxRs() {
+        Response response = ClientBuilder.newClient()
+                .register(ResolveHostFilter.class)
+                .target("http://hello").request().get();
+        System.out.println(response.getStatus());
+        System.out.println(response.getEntity());
     }
 
     @Test(expected = FeignException.class)
